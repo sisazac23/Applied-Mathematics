@@ -1,0 +1,208 @@
+\documentclass[12pt]{article}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{yfonts}
+\usepackage{parskip}
+\usepackage{bigints}
+\usepackage[inline]{enumitem}
+
+
+\newtheorem{thm}{Teorema}
+\newtheorem{dfn}[thm]{Definición}
+\DeclareMathOperator{\Tr}{Tr}
+
+
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\Scribe{Santiago Isaza Cadavid}
+\Lecturer{Edisson Gallego}
+\LectureNumber{1}
+\LectureDate{28 de Enero de 2023}
+\LectureTitle{Introducción a espacios topológicos}
+
+%\lstset{style=mystyle}
+
+\begin{document}
+	\MakeScribeTop
+
+
+\begin{dfn}
+Un espacio topológico $\mathcal{T}$ es un conjunto $\mathcal{X}$, junto con una colección de subconjuntos de $\mathcal{X}$ que serán llamados los abiertos de $\mathcal{X}$ (o también de $\mathcal{T}$).\\
+$\mathcal{T} = \{ u \subseteq \mathcal{X}\}$ que cumplen los siguientes axiomas
+\begin{itemize}
+    \item $\emptyset, \mathcal{X} \in \mathcal{T}$
+
+    \item $\mathcal{T}$ es cerrado con uniones arbitrarias. Esto es, si $\{ u_i\}_{i \in \mathcal{I}}$ son elementos de $\mathcal{T}$.
+
+     \item $\mathcal{T}$ es cerrado bajo intersecciones finitas.
+\end{itemize}
+
+\noindent \textbf{Ejemplo}
+$(\mathbb{R}, \mathcal{T})$ con $\mathcal{T}$ = $\{ \text{uniones arbitrarias de intervalos abiertos} \}$
+\end{dfn}
+
+\begin{dfn}[\textbf{Espacios normados}]
+\end{dfn}
+
+\begin{itemize}
+    \item \textbf{Espacio vectorial $\mathcal{V}$:}
+ es un conjunto con una operación binaria $\textbf{+} : \mathcal{V} \text{x} \mathcal{V} \rightarrow \mathcal{V}$ y una multiplicación $\bigcdot : \mathbb{R} \text{x} \mathcal{V} \rightarrow \mathcal{V}$ tal que
+ \begin{itemize}
+     \item $(\exists e \in  \mathcal{V}) ~ (\forall v \in  \mathcal{V}) ~ e \textbf{+} v = v$ 
+     
+     \item $(\exists v,w \in  \mathcal{V}) ~ (v \textbf{+} w = w\textbf{+}v)$
+
+     \item $(\forall v \in  \mathcal{V}) ~ (\exists \tilde{v} \in  \mathcal{V})  ~ (v \textbf{+} \tilde{v} = e)$
+
+     \item $(\forall v_1, v_2, v_3 \in  \mathcal{V}) ~ (v_1 \textbf{+} (v_2 \textbf{+} v_3) = (v_1 \textbf{+} v_2) \textbf{+} v_3)$
+
+     \item  $(\forall v \in  \mathcal{V}) ~ (1 \bigcdot v = v)$
+
+     \item $(\forall v,w \in  \mathcal{V}) ~ (\forall \lambda \in \mathbb{R}) ~ (\lambda \bigcdot (v \textbf{+} w) = \lambda \bigcdot w \textbf{+} \lambda \bigcdot w)$
+
+     \item $(\forall v \in  \mathcal{V}) ~ (\forall \lambda, \sigma \in \mathbb{R}) ~ ((\lambda + \sigma) \bigcdot v = \lambda \bigcdot v \textbf{+} \sigma \bigcdot v)$
+
+     \item $(\forall v \in V) ~ (\forall \lambda, \sigma \in \mathbb{R}) ~ ((\lambda \sigma) \bigcdot v = \lambda \bigcdot (\sigma \bigcdot v))$
+ \end{itemize}
+ \end{itemize}
+
+ \begin{dfn}
+     Sea $ \mathcal{V}, \mathbb{R}$ un espacio vectorial. Una norma sobre $ \mathcal{V}$ es una función
+     $$|| \text{ . }  || :  \mathcal{V} \rightarrow \mathbb{R}^+$$ 
+
+      \begin{itemize}
+        \item $||X|| \geq 0$ y $(||X|| = 0 \iff X = e = 0)$
+
+        \item $(\forall \lambda \in \mathbb{R}) ~ (\forall X \in \mathcal{V}) ~ (||\lambda \bigcdot X|| = |\lambda| ||X||)$
+
+        \item $(\forall X,Y \in \mathcal{V}) ~ (||X \textbf{+} Y||) \leq ||X|| \textbf{+} ||Y||$ )
+        
+      \end{itemize}
+ \end{dfn}
+
+\noindent \textbf{Observación:} Si $(\mathcal{V}, || \text{ . } ||)$ es un espacio vectorial normado es posible definir una función distancia en $\mathcal{V}$ así:
+$$d(X,Y) := ||X-Y||$$
+
+\noindent \textbf{Ejemplos}
+\begin{itemize}
+    \item $\mathcal{V} = \mathbb{R}$ , $||X||= |X|$ \\
+    \item $\mathcal{V} = \mathbb{R}^+$ y sea $X = (x_1 , x_2, \dots , x_n) \in \mathbb{R}^n $
+    
+    $||X||_\infty = \max \{ |x_i| : i = 1,2, \dots, n\}$
+    
+    $||X + Y||_\infty = \max \{ |x_i + y_i| \text{ tal que } i=1,2,\dots,n\}$
+    
+    $\leq \max \{ |x_i| + |y_i| \text{ tal que } i=1,2,\dots,n\}$
+    
+    $\leq \max \{ |x_i| \text{ tal que } i=1,2,\dots,n\} + \max \{ |y_i| \text{ tal que } i=1,2,\dots,n\}$
+    
+    $||X||_\infty + ||Y||_\infty$\\
+    \item $\mathcal{V} = \mathbb{R}^n \text{ , } X = (x_1,x_2,\dots,x_n)$ 
+
+    $||X|| = \sqrt{x_{1}^2 + x_{2}^2 + \dots + x_{n}^2}$
+
+    $||X|| \geq 0 \text{ es claro si } ||X|| = 0 \rightarrow X=0$ \\
+
+    \item Otra norma en $\mathbb{R}^n$ es: \\
+    Sea $p > 1 \text{ fijo , } ||X||_p = (\sum |x_i| ^p) ^ {1/p}$
+\end{itemize}
+
+\begin{dfn}[\textbf{Espacios vectoriales con producto interno}]
+Sea $\mathcal{V}$ un espacio vectorial sobre un $\mathbb{R}$, un producto interno en $\mathcal{V}$ es una función
+$$< \text{ , } >: \mathcal{V} \text{x} \mathcal{V} \rightarrow \mathbb{R}$$
+    \begin{itemize}
+        \item $\langle X,Y \rangle = \langle Y,X \rangle
+~ \forall X,Y \in \mathcal{V}$
+
+        \item $\langle X+ \alpha \tilde{X}, Y \rangle = \langle X,Y \rangle + \alpha \langle \tilde{X}, Y \rangle$
+
+        \item $\langle X,Y + \alpha \tilde{Y} \rangle = \langle X,Y \rangle + \alpha \langle X,\tilde{Y} \rangle$
+
+        \item $\langle X,X \rangle \geq 0 \text{ y } (\langle X,X \rangle = 0 \iff X=0)$
+    \end{itemize}
+\end{dfn}
+\noindent \textbf{Ejemplos}
+\begin{itemize}
+    \item $\mathcal{V} = \mathbb{R}^n \text{ , } \langle X, Y \rangle = X \bigcdot Y = \sum x_i y_i$
+    
+    \item $\mathcal{V} = \mathcal{C}_{\mathbb{R}} ([0,1])$ $\qquad$ $\langle f,g \rangle = \bigintsss_{[0,1]} (f,g) (x) dx$
+
+    
+    \item $\langle A, B \rangle  = \Tr (A^{\text{T}} B) \qquad \mathcal{V} = M_{n \text{x} n} (\mathbb{R})$    
+\end{itemize}
+
+\noindent \textbf{Observación:}
+Si $\mathcal{V} = \mathbb{R}^n, ~ X \bigcdot X = ||X|| ^ 2 \iff ||X|| = (X \bigcdot X)^{(1/2)} $ \\
+
+\begin{itemize}
+    \item $(V, \langle \text{ , }\rangle)$ demostrar que  
+$\langle 0 ,  X \rangle = 0$ 
+
+$\langle 0, X \rangle$ = $\langle 0+0 , X \rangle =  \langle 0,X \rangle + \langle 0 , X \rangle = 2 \langle 0, X \rangle = \langle 0, X \rangle = 0$
+\end{itemize} 
+
+\vspace{0.5cm}
+
+\begin{dfn}[\textbf{Desigualdad de Cauchy-Schwarz}]
+Sea $\mathcal{V}, \langle \text{ , } \rangle, \mathbb{R}$ espacio vectorial con producto interno 
+$$\langle X,Y \rangle \leq \langle X,X \rangle \langle Y,Y \rangle$$
+$$\langle X,Y \rangle \leq ||X|| ~ ||Y||$$
+\begin{proof}
+    
+
+Sabemos que $\langle \lambda X+Y, \lambda X + Y \rangle \leq 0$ 
+
+$\langle \lambda X, \lambda X \rangle + \langle \lambda X, Y \rangle + \langle Y, \lambda X \rangle + \langle Y,Y \rangle \geq 0$ 
+
+$\lambda ^2 \langle X,X \rangle + \lambda \langle X,Y \rangle + \lambda \langle Y,X \rangle + \langle Y,Y \rangle \geq 0$
+
+$\lambda^2 \langle X, X \rangle + 2 \lambda \langle X,Y \rangle + \langle Y, Y \rangle \geq 0$
+
+Si $\langle X,X \rangle = 0$ no hay nada que demostrar, pues $X = 0$. 
+
+Ahora, consideremos $\lambda = - \dfrac{\langle X, Y \rangle}{\langle X, X \rangle}$ 
+
+$\dfrac{\langle X, Y\rangle ^2}{ \langle X,X \rangle ^2} \langle X,X \rangle - 2 \dfrac{\langle X, Y \rangle}{\langle X, X \rangle} \langle X, Y \rangle + \langle Y,Y \rangle \geq 0$
+
+$\iff \dfrac{\langle X, Y\rangle ^2}{ \langle X,X \rangle }  - \dfrac{\langle X, Y \rangle ^2}{\langle X, X \rangle } + \langle Y, Y \rangle \geq 0$
+
+$\iff - \dfrac{\langle X, Y\rangle ^2}{ \langle X,X \rangle } + \langle Y, Y \rangle \geq 0 $
+
+$\iff \langle X,X \rangle \langle Y,Y\rangle \geq \langle X,Y \rangle ^2$
+
+En particular, tomando la norma euclídea (norma con $p=2)$ tenemos
+$$XY \leq ||X|| ~ ||Y||$$    
+\end{proof}
+\end{dfn}
+
+\noindent \textbf{Desigualdad triangular en norma euclídea}\\
+
+
+\begin{proof} $||X+Y|| \leq ||X||+||Y||$ 
+
+$||X+Y||^2 = \sum (x_i + y_i)^2$
+
+$= \sum x_{i}^2 + 2 \sum x_i y_i + \sum y_{i}^2$
+
+$ ||X||^2 + 2 \langle X,Y \rangle + ||Y||^2$
+
+$\leq ||X||^2 + 2 ||X|| ~ ||Y|| + ||Y||^2$
+
+$ = (||X|| + ||Y||) ^2$
+
+$||X+Y|| \leq ||X||+||Y||$
+    \end{proof}
+
+
+\end{document}
+
