@@ -1,0 +1,19 @@
+#map{
+    width: 100hw;
+    height: 90vh;
+}
+
+h1{
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    color: darkblue;
+}
+
+select{
+    font-size: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    color: darkblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
