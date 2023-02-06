@@ -46,12 +46,8 @@ In this session, students will learn about the Jordan form, Schur decomposition 
 
 ## Bibliography:
 
-"Linear Algebra: A Modern Introduction" by David Poole
-
-"Linear Algebra and Its Applications" by Gilbert Strang
-
-"Introduction to Linear Algebra" by Gilbert Strang
-
-"Matrix Computations" by Gene H. Golub and Charles F. Van Loan
-
-"A Course in Linear Algebra" by Robert A. Beezer.
+- "Linear Algebra: A Modern Introduction" by David Poole
+- "Linear Algebra and Its Applications" by Gilbert Strang
+- "Introduction to Linear Algebra" by Gilbert Strang
+- "Matrix Computations" by Gene H. Golub and Charles F. Van Loan
+- "A Course in Linear Algebra" by Robert A. Beezer.
