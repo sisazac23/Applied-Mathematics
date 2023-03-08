@@ -31,13 +31,17 @@ def heatmap_points(df: pd.DataFrame, lat_col: str = 'lat', lon_col: str = 'lot',
     curr_map = folium.Map(location=[middle_lat, middle_lon],
                           zoom_start=zoom_start)
 
-    # add points to map
+    # add points to map with circles without circunference
+
+
     if plot_points:
         for _, row in df.iterrows():
+            #Define radius of circle based on the values of the heat_maps_weights_col, making int bigger if the value is bigger
             folium.CircleMarker([row[lat_col], row[lon_col]],
-                                radius=pt_radius,
+                                radius=pt_radius*(row[heat_map_weights_col]/df[heat_map_weights_col].max()),
                                 #popup=row['name'],
-                                fill_color="#3db7e4", # divvy color
+                                fill_color="#3db7e4", # divvy color,
+                                border_width=0
                                ).add_to(curr_map)
 
     # add heatmap
