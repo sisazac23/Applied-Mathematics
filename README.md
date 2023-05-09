@@ -1,8 +1,6 @@
 # Applied-Mathematics
 
-# Applied Mathematics Repository
-
-This repository, named "Applied Mathematics," is a collaborative project between myself and my colleague, Pablo Osorio. Our aim is to document our MSc Applied Mathematics journey at Universidad EAFIT. The repository serves as a centralized hub for our research, coursework, and other related materials.
+This repository, named Applied Mathematics, is a collaborative project between myself and my colleague, Pablo Osorio. Our aim is to document our MSc Applied Mathematics journey at Universidad EAFIT. The repository serves as a centralized hub for our research, coursework, and other related materials.
 
 ## Collaborators
 
